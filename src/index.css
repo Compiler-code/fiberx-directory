@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SaaS-inspired Modern Design System */
+
+@layer base {
+  :root {
+    /* Modern SaaS Color Palette */
+    --primary: 220 100% 50%;           /* Vibrant blue like Notion/Slack */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 220 100% 45%;
+    --primary-light: 220 100% 96%;
+    
+    --secondary: 240 5% 26%;           /* Professional dark gray */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 240 5% 20%;
+    
+    /* Clean Background System */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+    --surface: 0 0% 98%;               /* Subtle surface like Dropbox */
+    --surface-hover: 0 0% 96%;
+    --surface-elevated: 0 0% 100%;
+    
+    /* Card System - Clean shadows like Microsoft 365 */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --card-border: 220 13% 91%;
+    --card-shadow: 240 10% 4%;
+    
+    /* Text Hierarchy - Like Google Workspace */
+    --text-primary: 240 10% 4%;
+    --text-secondary: 240 5% 64%;
+    --text-muted: 240 5% 84%;
+    
+    /* Interactive States */
+    --accent: 220 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: 220 100% 45%;
+    
+    /* Success/Warning/Error - Professional SaaS colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Form Controls */
+    --input: 0 0% 100%;
+    --input-border: 220 13% 91%;
+    --input-focus: 220 100% 50%;
+    --ring: 220 100% 50%;
+    
+    /* Borders and Radius - Modern SaaS styling */
+    --border: 220 13% 91%;
+    --radius: 0.75rem;
+    
+    /* Professional Shadows - Like Salesforce/Adobe */
+    --shadow-xs: 0 1px 2px 0 hsl(var(--card-shadow) / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(var(--card-shadow) / 0.1), 0 1px 2px -1px hsl(var(--card-shadow) / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(var(--card-shadow) / 0.1), 0 2px 4px -2px hsl(var(--card-shadow) / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(var(--card-shadow) / 0.1), 0 4px 6px -4px hsl(var(--card-shadow) / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(var(--card-shadow) / 0.1), 0 8px 10px -6px hsl(var(--card-shadow) / 0.1);
+    --shadow-hover: 0 20px 25px -5px hsl(var(--card-shadow) / 0.15), 0 8px 10px -6px hsl(var(--card-shadow) / 0.1);
+    
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface-elevated)), hsl(var(--surface)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.05));
+    
+    /* Smooth Transitions */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar tokens for consistency */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 220 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Modern SaaS Card Components */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-card-border bg-card;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .card-hover:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Professional Button System - Like Slack/Notion */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover transition-all duration-200 font-medium rounded-lg px-6 py-3 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface border border-card-border text-text-primary hover:bg-surface-hover transition-all duration-200 font-medium rounded-lg px-6 py-3 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent text-text-secondary hover:bg-surface hover:text-text-primary transition-all duration-200 font-medium rounded-lg px-4 py-2;
+  }
+
+  /* Modern Search Input - Google Workspace style */
+  .search-input {
+    @apply w-full bg-input border border-input-border rounded-xl px-6 py-4 text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200 shadow-sm focus:shadow-md;
+  }
+  
+  /* Filter Controls - Professional SaaS styling */
+  .filter-select {
+    @apply bg-surface border border-card-border rounded-lg px-4 py-2.5 text-text-primary focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+
+  /* Link Styles - Clean and professional */
+  .link-primary {
+    @apply text-accent hover:text-accent/80 underline-offset-4 transition-colors duration-200 font-medium;
+  }
+
+  /* Grid System - Responsive and clean */
+  .business-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  /* Text Hierarchy - SaaS typography */
+  .text-heading {
+    @apply text-text-primary font-bold tracking-tight;
+  }
+  
+  .text-body {
+    @apply text-text-secondary leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply text-text-muted text-sm;
+  }
+  
+  /* Hero Section - Modern SaaS landing style */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Professional Shadows */
+  .shadow-card {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-lg);
+  }
+}
